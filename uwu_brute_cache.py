@@ -25,7 +25,7 @@ def lade(wunsch_zelle, loesungs_datei):
     
     if 0 <= wunsch_zelle < len(code_zellen):
         ziel_code = "".join(code_zellen[wunsch_zelle].get("source", []))
-        get_ipython().set_next_input(ziel_code, replace=False)
+        get_ipython().set_next_input(ziel_code, replace=True)
         print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! ✨")
     else:
         print(f"❌ Nummer {wunsch_zelle + 1} gibt es in dieser Lösung nicht.")
