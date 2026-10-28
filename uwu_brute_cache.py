@@ -24,9 +24,20 @@ def lade(wunsch_zelle, loesungs_datei):
     code_zellen = [z for z in notebook_daten.get("cells", []) if z.get("cell_type") == "code" and "".join(z.get("source", [])) != ""]
     
     if 0 <= wunsch_zelle < len(code_zellen):
-        ziel_code = "".join(code_zellen[wunsch_zelle].get("source", []))
+        roh_code = "".join(code_zellen[wunsch_zelle].get("source", []))
+        
+        # ✂️ SCHNIPP-SCHNAPP: Zeilenweise aufteilen und Kommentare wegwerfen!
+        gesäuberte_zeilen = []
+        for zeile in roh_code.splitlines():
+            # strip() entfernt Leerzeichen am Anfang, damit auch eingerückte Kommentare erwischt werden
+            if not zeile.strip().startswith('#'):
+                gesäuberte_zeilen.append(zeile)
+        
+        # Den Code ohne Kommentare wieder sauber zusammensetzen
+        ziel_code = "\\n".join(gesäuberte_zeilen)
+        
         get_ipython().set_next_input(ziel_code, replace=True)
-        print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! ✨")
+        print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! (Kommentare bereinigt 🤫) ✨")
     else:
         print(f"❌ Nummer {wunsch_zelle + 1} gibt es in dieser Lösung nicht.")
 """
