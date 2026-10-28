@@ -9,6 +9,7 @@ pycache_path = os.path.join(cache_dir, '__pycache__')
 if os.path.exists(pycache_path):
     shutil.rmtree(pycache_path)
 
+# 🛠️ ERWEITERT: Jetz baut der Code auf deiner exakten Vorlage auf!
 neuer_code = """import json
 import os
 from IPython import get_ipython
@@ -34,7 +35,6 @@ def lade(wunsch_zelle, loesungs_datei):
     if 0 <= wunsch_zelle < len(code_zellen):
         roh_code = "".join(code_zellen[wunsch_zelle].get("source", []))
         
-        # Zeilenweise filtern und Kommentare (#) komplett ignorieren
         gesaeuberte_zeilen = []
         for zeile in roh_code.splitlines():
             if not zeile.strip().startswith('#'):
@@ -43,20 +43,28 @@ def lade(wunsch_zelle, loesungs_datei):
         ziel_code = "\\n".join(gesaeuberte_zeilen)
         get_ipython().set_next_input(ziel_code, replace=True)
         
+        # 🪄 DIE BRILANTE ANPASSUNG: Sucht genau den Ort des Aufrufs und holt den Fokus zurück!
         cursor_magic = '''
         <script>
             setTimeout(function() {
-                var activeCell = document.querySelector('.jp-Cell.jp-mod-selected');
-                if (activeCell) {
-                    // Wir suchen direkt den interaktiven Code-Editor der Zelle
-                    var editorArea = activeCell.querySelector('.cm-content, .CodeMirror');
+                // Findet exakt die Zelle, die gerade ersetzt wurde
+                var currentScript = document.currentScript;
+                var myCell = currentScript ? currentScript.closest('.jp-Cell') : null;
+                
+                if (myCell) {
+                    // 1. Zwingt JupyterLab, diese Zelle visuell wieder auszuwählen
+                    var inputArea = myCell.querySelector('.jp-Cell-inputArea');
+                    if (inputArea) { inputArea.click(); }
+                    
+                    // 2. Setzt den blinkenden Cursor direkt in den Code-Editor
+                    var editorArea = myCell.querySelector('.cm-content, .CodeMirror-code, [contenteditable="true"]');
                     if (editorArea) {
-                        // Klickt virtuell ganz an das Ende des Textes, damit der Cursor blinkt
+                        editorArea.focus();
                         var clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
                         editorArea.dispatchEvent(clickEvent);
                     }
                 }
-            }, 50); // Blitzschneller Delay nach dem Umbau
+            }, 100); // 100ms warten, damit Jupiters automatischer Sprung nach unten erst fertig ist
         </script>
         '''
         display(HTML(cursor_magic))
