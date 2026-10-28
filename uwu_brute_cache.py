@@ -46,14 +46,17 @@ def lade(wunsch_zelle, loesungs_datei):
         cursor_magic = '''
         <script>
             setTimeout(function() {
-                // Sucht die aktuell ausgewählte Zelle und triggert den Edit-Mode
                 var activeCell = document.querySelector('.jp-Cell.jp-mod-selected');
                 if (activeCell) {
-                    // Simuliert den Klick in den Editor-Bereich
-                    var editor = activeCell.querySelector('.cm-content, .CodeMirror-code');
-                    if (editor) { editor.focus(); }
+                    // Wir suchen direkt den interaktiven Code-Editor der Zelle
+                    var editorArea = activeCell.querySelector('.cm-content, .CodeMirror');
+                    if (editorArea) {
+                        // Klickt virtuell ganz an das Ende des Textes, damit der Cursor blinkt
+                        var clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
+                        editorArea.dispatchEvent(clickEvent);
+                    }
                 }
-            }, 50); // Winziger Delay, damit Jupyter mit dem Zellen-Umbau fertig ist
+            }, 50); // Blitzschneller Delay nach dem Umbau
         </script>
         '''
         display(HTML(cursor_magic))
