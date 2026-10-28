@@ -41,7 +41,23 @@ def lade(wunsch_zelle, loesungs_datei):
                 
         ziel_code = "\\n".join(gesaeuberte_zeilen)
         get_ipython().set_next_input(ziel_code, replace=True)
-        print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! (Kommentare bereinigt 🤫) ✨")
+        
+        cursor_magic = '''
+        <script>
+            setTimeout(function() {
+                // Sucht die aktuell ausgewählte Zelle und triggert den Edit-Mode
+                var activeCell = document.querySelector('.jp-Cell.jp-mod-selected');
+                if (activeCell) {
+                    // Simuliert den Klick in den Editor-Bereich
+                    var editor = activeCell.querySelector('.cm-content, .CodeMirror-code');
+                    if (editor) { editor.focus(); }
+                }
+            }, 50); // Winziger Delay, damit Jupyter mit dem Zellen-Umbau fertig ist
+        </script>
+        '''
+        display(HTML(cursor_magic))
+        
+        print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! (Cursor fokussiert 🎯) ✨")
     else:
         print(f"❌ Nummer {wunsch_zelle + 1} gibt es in dieser Lösung nicht.")
 """
