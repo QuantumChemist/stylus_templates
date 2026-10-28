@@ -48,9 +48,9 @@
     url('https://media.tenor.com/YLdVevFNPCIAAAAM/cat-kung-fu.gif'),
     url('https://media.tenor.com/1PtJRVJ-S3MAAAAi/tired-tired-cat.gif') !important;
   background-position: 
-    left 50px bottom 570px, 
+    left 50px top 100px, 
     left 50px bottom 40px, 
-    right 50px bottom 200px !important;
+    right 50px center !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
   background-size: 250px auto, 250px auto, 250px auto !important;
