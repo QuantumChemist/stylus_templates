@@ -2,7 +2,8 @@ import json
 import os
 from IPython import get_ipython
 
-def lade(wunsch_zelle - 1, loesungs_datei):
+def lade(wunsch_zelle, loesungs_datei):
+    wunsch_zelle -= 1
     aktueller_ordner = os.getcwd()
     basis_ordner = os.path.dirname(aktueller_ordner) 
     
