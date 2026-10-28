@@ -226,3 +226,41 @@
   99.5% { opacity: 0; transform: scale(0.5) rotate(-6deg); }
   100% { opacity: 0; }
 }
+
+.jp-Notebook {
+  counter-reset: uwuZellenZaehler !important; 
+}
+
+.jp-CodeCell {
+  counter-increment: uwuZellenZaehler !important;
+  position: relative !important;
+}
+
+.jp-CodeCell::after {
+  content: "✦ Zelle " counter(uwuZellenZaehler) " ✦" !important;
+  
+  display: block !important;
+  position: absolute !important;
+  
+  top: -10px !important;
+  left: 25px !important;
+  z-index: 100 !important;
+  
+  font-family: 'Quicksand', 'Comic Sans MS', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  color: #5c474a !important;
+  background-color: #ffd1dc !important; 
+  padding: 2px 8px !important;
+  border-radius: 20px !important; 
+  border: 1px solid #ffb6c1 !important;
+  box-shadow: 0 2px 4px rgba(255, 182, 193, 0.3) !important;
+  
+  pointer-events: none !important;
+}
+
+.jp-CodeCell.jp-mod-selected::after {
+  background-color: #87cefa !important;
+  border-color: #b0e2ff !important;
+  color: #2f4f4f !important;
+}
