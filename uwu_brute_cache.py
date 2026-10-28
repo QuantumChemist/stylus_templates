@@ -1,7 +1,15 @@
 import os
+import sys
+import shutil
 
-cache_path = os.path.expanduser('~/.cache/uwu_helper.py')
-code_direkt = """import json
+cache_dir = os.path.expanduser('~/.cache')
+cache_path = os.path.join(cache_dir, 'uwu_helper.py')
+
+pycache_path = os.path.join(cache_dir, '__pycache__')
+if os.path.exists(pycache_path):
+    shutil.rmtree(pycache_path)
+
+neuer_code = """import json
 import os
 from IPython import get_ipython
 
@@ -11,7 +19,6 @@ def lade(wunsch_zelle, loesungs_datei):
     
     aktueller_ordner = os.getcwd()
     loesungs_pfad_ordner = aktueller_ordner + "-solutions"
-    
     loesungs_pfad = os.path.join(loesungs_pfad_ordner, loesungs_datei)
     
     if not os.path.exists(loesungs_pfad):
@@ -26,16 +33,13 @@ def lade(wunsch_zelle, loesungs_datei):
     if 0 <= wunsch_zelle < len(code_zellen):
         roh_code = "".join(code_zellen[wunsch_zelle].get("source", []))
         
-        # ✂️ SCHNIPP-SCHNAPP: Zeilenweise aufteilen und Kommentare wegwerfen!
-        gesäuberte_zeilen = []
+        # Zeilenweise filtern und Kommentare (#) komplett ignorieren
+        gesaeuberte_zeilen = []
         for zeile in roh_code.splitlines():
-            # strip() entfernt Leerzeichen am Anfang, damit auch eingerückte Kommentare erwischt werden
             if not zeile.strip().startswith('#'):
-                gesäuberte_zeilen.append(zeile)
-        
-        # Den Code ohne Kommentare wieder sauber zusammensetzen
-        ziel_code = "\\n".join(gesäuberte_zeilen)
-        
+                gesaeuberte_zeilen.append(zeile)
+                
+        ziel_code = "\\n".join(gesaeuberte_zeilen)
         get_ipython().set_next_input(ziel_code, replace=True)
         print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! (Kommentare bereinigt 🤫) ✨")
     else:
@@ -43,6 +47,12 @@ def lade(wunsch_zelle, loesungs_datei):
 """
 
 with open(cache_path, 'w', encoding='utf-8') as f:
-    f.write(code_direkt)
+    f.write(neuer_code)
 
-print("🎯 BOOM! Der Server MUSS jetzt deine neue Version benutzen!")
+if 'uwu_helper' in sys.modules:
+    del sys.modules['uwu_helper']
+
+import uwu_helper
+print("--------------------------------------------------")
+print(f"🎯 ERFOLG! Das Modul wird geladen aus: {uwu_helper.__file__}")
+print("--------------------------------------------------")
