@@ -12,6 +12,7 @@ if os.path.exists(pycache_path):
 neuer_code = """import json
 import os
 from IPython import get_ipython
+from IPython.display import display, HTML
 
 def lade(wunsch_zelle, loesungs_datei):
     wunsch_zelle -= 1
