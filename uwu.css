@@ -186,3 +186,43 @@
 ::-webkit-scrollbar-button, .jp-Cell ::-webkit-scrollbar-button {
   display: none !important;
 }
+
+.jp-Notebook::after {
+  content: 'Christina, du schaffst das!!!! ✨🎉' !important;
+  display: flex !important;
+  position: fixed !important;
+
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999999 !important;
+
+  font-family: 'Quicksand', 'Comic Sans MS', sans-serif !important;
+  font-size: 70px !important;
+  font-weight: 900 !important;
+  color: #4a373a !important;
+  text-shadow: 0 0 20px #ffffff, 0 0 30px #ffd1dc, 0 0 40px #ffb6c1 !important;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transform: rotate(-5deg) !important;
+  
+  background-image: url('https://media.tenor.com/piXSVURmLbIAAAAi/confetti-confeti.gif') !important;
+  background-size: cover !important;
+  background-position: center !important;
+
+  pointer-events: none !important;
+
+  animation: christinaZufallsKonfetti 900s infinite linear !important;
+  opacity: 0; 
+}
+
+@keyframes christinaZufallsKonfetti {
+  0%   { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  97%  { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  97.5% { opacity: 1; transform: scale(1.05) rotate(-4deg); }
+  98.5% { opacity: 1; transform: scale(1) rotate(-5deg); }
+  99.5% { opacity: 0; transform: scale(0.5) rotate(-6deg); }
+  100% { opacity: 0; }
+}
