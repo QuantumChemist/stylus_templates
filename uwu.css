@@ -1,0 +1,188 @@
+/* UwU styling against boreout pain of StackFuel Jupyter Notebooks <3 */
+:root {
+  --jp-layout-color0: #fff0f5 !important; 
+  --jp-layout-color1: #fff5f7 !important; 
+  --jp-layout-color2: #ffe4e1 !important; 
+  --jp-layout-color3: #ffd1dc !important;
+
+  --jp-ui-font-color0: #4a373a !important;
+  --jp-ui-font-color1: #5c474a !important;
+  --jp-content-font-color1: #4a373a !important;
+
+  --jp-brand-color1: #ffb6c1 !important; 
+  --jp-brand-color2: #87cefa !important;
+
+  --jp-ui-font-family: 'Quicksand', 'Comic Sans MS', sans-serif !important;
+  --jp-content-font-family: 'Quicksand', sans-serif !important;
+  --jp-code-font-family: 'Consolas', monospace !important;
+
+  --jp-mirror-editor-keyword-color: #9400d3 !important;  
+  --jp-mirror-editor-builtin-color: #ba55d3 !important;  
+  --jp-mirror-editor-number-color: #8a2be2 !important;   
+  --jp-mirror-editor-def-color: #4b0082 !important;   
+  --jp-mirror-editor-string-color: #c71585 !important;  
+}
+
+.jp-Cell {
+  position: relative !important;
+  border-radius: 12px !important;
+  border: 1px solid #ffd1dc !important;
+  background-color: #ffffff !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 4px 6px rgba(255, 182, 193, 0.15) !important;
+}
+
+.jp-Cell.jp-mod-selected {
+  border: 2px solid #ffb6c1 !important;
+  animation: uwuGlow 2s infinite ease-in-out !important;
+}
+
+@keyframes uwuGlow {
+  0%, 100% { border-color: #ffb6c1 !important; box-shadow: 0 0 8px rgba(255, 182, 193, 0.4) !important; }
+  50% { border-color: #87cefa !important; box-shadow: 0 0 18px rgba(135, 206, 250, 0.7) !important; }
+}
+
+.jp-Notebook {
+  background-image: 
+    url('https://media.tenor.com/3zg0ZV5ga54AAAAj/uwu-cat.gif'), 
+    url('https://media.tenor.com/YLdVevFNPCIAAAAM/cat-kung-fu.gif'),
+    url('https://media.tenor.com/1PtJRVJ-S3MAAAAi/tired-tired-cat.gif') !important;
+  background-position: 
+    left 50px bottom 570px, 
+    left 50px bottom 40px, 
+    right 50px bottom 200px !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: 250px auto, 250px auto, 250px auto !important;
+}
+
+.jp-Notebook-cellContainer {
+  padding: 0 60px !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+.jp-Cell-outputArea {
+  animation: uwuSuccessFlash 0.8s ease-out !important;
+}
+
+@keyframes uwuSuccessFlash {
+  0% { background-color: rgba(186, 85, 211, 0.4) !important; box-shadow: inset 0 0 20px rgba(186, 85, 211, 0.6) !important; transform: scale(0.99); }
+  50% { background-color: rgba(255, 182, 193, 0.2) !important; transform: scale(1.005); }
+  100% { background-color: transparent !important; transform: scale(1); }
+}
+
+.jp-InputPrompt, .jp-OutputPrompt {
+  color: #ba55d3 !important;
+  font-weight: bold !important;
+}
+
+.jp-OutputArea-child {
+  position: relative !important;
+}
+
+.jp-OutputArea-child::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  border-radius: 20px !important;
+  overflow: hidden !important; 
+  bottom: -10px !important;
+  right: 20px !important;
+  width: 150px !important;
+  height: 150px !important;
+  background-image: url('https://gifdb.com/images/branded/high/cute-seal-approval-thumbs-up-nm527lal17yrk0go.gif') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  animation: uwuGifPop 3s forwards ease-out !important;
+}
+
+@keyframes uwuGifPop {
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+  15% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+  25% { transform: scale(1) rotate(0deg); opacity: 1; }
+  85% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+.jp-Cell div:has(> button), div[class*="footer"], div[class*="controls"], div[class*="widget"] {
+  background-color: #ffffff !important;
+  border-top: 1px solid #ffd1dc !important;
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+  overflow: visible !important; 
+  overflow-x: visible !important;
+}
+
+.jp-Cell div:has(> button) > div, div[class*="footer"] > div {
+  overflow: visible !important;
+  width: 100% !important;
+}
+
+.jp-Cell button {
+  background-color: #fff5f7 !important;
+  color: #4a373a !important;
+  border: 1px solid #ffd1dc !important;
+  border-radius: 6px !important;
+  transition: all 0.2s !important;
+}
+
+.jp-Cell button:hover {
+  background-color: #ffb6c1 !important;
+  cursor: pointer !important;
+}
+
+.jp-mod-selected::before {
+  background-color: #ffb6c1 !important; 
+}
+
+.jp-RenderedMarkdown p:has(> strong) {
+  position: relative !important;
+  padding: 0px !important;
+  min-height: 0px !important;   
+}
+
+.jp-RenderedMarkdown:has(p > strong)::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 10px !important;
+  right: 15px !important;
+  width: 150px !important;  
+  height: 150px !important;
+  background-image: url('https://media.tenor.com/8odUYPVphjoAAAAi/frog-waving.gif') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+  z-index: 10 !important; 
+}
+
+* {
+  scrollbar-color: #ffb6c1 #fff5f7 !important;
+}
+
+.jp-OutputArea-output {
+  scrollbar-width: auto !important;
+}
+
+::-webkit-scrollbar-track, .jp-Cell ::-webkit-scrollbar-track, .CodeMirror-hscrollbar::-webkit-scrollbar-track, .jp-OutputArea-output::-webkit-scrollbar-track, .jp-OutputArea-output *::-webkit-scrollbar-track {
+  background: #fff5f7 !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb, .jp-Cell ::-webkit-scrollbar-thumb, .CodeMirror-hscrollbar::-webkit-scrollbar-thumb, .jp-OutputArea-output::-webkit-scrollbar-thumb, .jp-OutputArea-output *::-webkit-scrollbar-thumb {
+  background: #ffd1dc !important;
+  border-radius: 10px !important;
+  border: 2px solid #fff5f7 !important;
+}
+
+::-webkit-scrollbar-thumb:hover, .jp-Cell ::-webkit-scrollbar-thumb:hover, .CodeMirror-hscrollbar::-webkit-scrollbar-thumb:hover, .jp-OutputArea-output::-webkit-scrollbar-thumb:hover, .jp-OutputArea-output *::-webkit-scrollbar-thumb:hover {
+  background: #ffb6c1 !important;
+  cursor: pointer !important;
+}
+
+::-webkit-scrollbar-button, .jp-Cell ::-webkit-scrollbar-button {
+  display: none !important;
+}
