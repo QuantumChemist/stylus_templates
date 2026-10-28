@@ -61,7 +61,7 @@ def lade(wunsch_zelle, loesungs_datei):
         '''
         display(HTML(cursor_magic))
         
-        print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} wurde eingefügt! (Cursor fokussiert 🎯) ✨")
+        print(f"✨ Lösung für lila Zelle Nummer {wunsch_zelle + 1} geladen! Drücke SHIFT + ENTER zum Ausführen! 🎯 ✨")
     else:
         print(f"❌ Nummer {wunsch_zelle + 1} gibt es in dieser Lösung nicht.")
 """
