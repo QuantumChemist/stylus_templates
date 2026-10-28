@@ -5,9 +5,11 @@ from IPython import get_ipython
 def lade(wunsch_zelle, loesungs_datei):
     wunsch_zelle -= 1
     loesungs_datei += '-solution.ipynb'
+    print(loesungs_datei, 'hier')
 
     aktueller_ordner = os.getcwd()
     loesungs_pfad_ordner = aktueller_ordner + "-solutions"
+    print(aktueller_ordner,'hier2')
     
     loesungs_pfad = os.path.join(loesungs_pfad_ordner, loesungs_datei)
     
